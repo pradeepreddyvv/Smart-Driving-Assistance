@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+<p>Your email id {{ email_id }}!</p-->
+<p>Chosen traffic_sign {{ traffic_sign }}!</p>
+<p>Chosen traffic_sign_voice_instruction {{ traffic_sound }}!</p>
+<p>Chosen road_lanes {{ road_lanes  }} !</p>
+<p>Chosen lane_departure_Alert {{ lane_sound }}!</p>
+
+
+<body>
+    <div class="loggedin">
+        <div class="row main">
+            <div>
+                <!--h6>Register New user or login existing account</h6-->
+                <form action="{{ url_for('detect') }}" method="post" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Choose Here</label>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">traffic_sign</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                                <p style="display:block;">Please select: 
+
+                                </p>
+                                <div style="display: block;">
+                                      <input type="radio" id="traffic_sign" name="traffic_sign" value="Yes">
+                                      <label for="traffic_sign">Yes</label><br>
+                                      <input type="radio" id="traffic_sign" name="traffic_sign" value="No">
+                                      <label for="traffic_sign">No</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">traffic_sign_voice_instruction</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                                <p style="display:block;">Please select: 
+
+                                </p>
+                                <div style="display: block;">
+                                      <input type="radio" id="traffic_sound" name="traffic_sound" value="Yes">
+                                      <label for="traffic_sound">Yes</label><br>
+                                      <input type="radio" id="traffic_sound" name="traffic_sound" value="No">
+                                      <label for="traffic_sound">No</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">road_lanes</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                                <p style="display:block;">Please select: 
+
+                                </p>
+                                <div style="display: block;">
+                                      <input type="radio" id="road_lanes" name="road_lanes" value="Yes">
+                                      <label for="road_lanes">Yes</label><br>
+                                      <input type="radio" id="road_lanes" name="road_lanes" value="No">
+                                      <label for="road_lanes">No</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">lane_departure_Alert</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                                <p style="display:block;">Please select: 
+
+                                </p>
+                                <div style="display: block;">
+                                      <input type="radio" id="lane_sound" name="lane_sound" value="Yes">
+                                      <label for="lane_sound">Yes</label><br>
+                                      <input type="radio" id="lane_sound" name="lane_sound" value="No">
+                                      <label for="lane_sound">No</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                        aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                    id="password" required placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group ">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input type="submit" value="Start Detection" class="form-control btn btn-primary " name="">
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Made with <span style="color: #e25555;">&#9829;</span> by <span> <a href="https://github.com/pradeep9redddy" target="_blank">Pradeep</a></span-->
+    {% endblock %}

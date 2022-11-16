@@ -1,0 +1,172 @@
+{% extends 'main_help.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- <h1 class="h2">Dashboard</h1> -->
+
+{% if platform and station and boards %}
+
+
+<p>Your current booking was {{ ticket['start'] }} to {{ ticket['destination']}} !</p>
+<p>Your current booking was in METRO ID = {{ platform['station_id'] }} FROM Station name =
+    {{ station['station_name']
+    }}!</p>
+<p>Your timing to board and depart are {{ platform['arrival_time'] }} to {{ platform['departure_time'] }}!</p>
+<p>Your current booking waiting time is {{ platform['waiting_time'] }}!</p>
+<p>Your in line ID is {{ station['line_id'] }}!</p>
+<p>Your enter in metro ID = {{ boards['metro_id'] }}!</p>
+<p>Fare = {{ ticket['fare'] }}!</p>
+
+{% endif %}
+
+
+<body>
+    <h5>Need Metro Account Do Register as New User on top left</h5>
+    <h6>OR</h6>
+    <h5>Login existing user on top right</h5>
+    <div class="loggedin">
+        <div class="row main">
+            <div>
+                
+                <h5>Book here Below if one don't have an Account</h5>
+                <form action="{{ url_for('main') }}" method="post" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Start</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+
+                                <label for="start">Choose station 1 : </label>
+                                <select name="start" id="start">
+                                    <option value="st_01">‎‎ ‎ ‎ st_01‎ ‎ ‎ </option>
+                                    <option value="st_02">‎ ‎ ‎ st_02 ‎ ‎ </option>
+                                    <option value="st_03">‎ ‎ ‎ st_03‎ ‎  </option>
+                                    <option value="st_04">‎ ‎ ‎ st_04 ‎  </option>
+                                    <option value="st_05">‎ ‎ ‎ st_05 ‎  </option>
+                                    <option value="st_06">‎ ‎ ‎ st_06‎ ‎  </option>
+                                    <option value="st_07">‎ ‎ ‎ st_07‎ ‎  </option>
+                                    <option value="st_08">‎ ‎ ‎ st_08‎ ‎  </option>
+                                    <option value="st_09">‎ ‎ ‎ st_09‎ ‎  </option>
+                                    <option value="st_10">‎ ‎ ‎ st_10‎ ‎  </option>
+                                    <option value="st_11">‎ ‎ ‎ st_11‎ ‎  </option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Destination</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                        aria-hidden="true"></i></span>
+                                <div>
+                                    <label for="dest">Choose station 2 : </label><br>
+                                </div>
+                                <div>
+                                    <select name="dest" id="dest">
+                                        <option value="st_01">‎‎ ‎ ‎ st_01‎ ‎ ‎ </option>
+                                        <option value="st_02">‎ ‎ ‎ st_02 ‎ ‎ </option>
+                                        <option value="st_03">‎ ‎ ‎ st_03‎ ‎  </option>
+                                        <option value="st_04">‎ ‎ ‎ st_04 ‎  </option>
+                                        <option value="st_05">‎ ‎ ‎ st_05 ‎  </option>
+                                        <option value="st_06">‎ ‎ ‎ st_06‎ ‎  </option>
+                                        <option value="st_07">‎ ‎ ‎ st_07‎ ‎  </option>
+                                        <option value="st_08">‎ ‎ ‎ st_08‎ ‎  </option>
+                                        <option value="st_09">‎ ‎ ‎ st_09‎ ‎  </option>
+                                        <option value="st_10">‎ ‎ ‎ st_10‎ ‎  </option>
+                                        <option value="st_11">‎ ‎ ‎ st_11‎ ‎  </option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Gender</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+
+                                <p style="display:block;">Please select your Gender:
+
+                                </p>
+                                <div style="display: block;">
+                                      <input type="radio" id="male" name="gender" value="M">
+                                      <label for="male">Male</label><br>
+                                      <input type="radio" id="female" name="gender" value="F">
+                                      <label for="female">Female</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg"
+                                        aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                    id="password" required placeholder="Enter your Password" />
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group ">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input type="submit" value="Book" class="form-control btn btn-primary " name="">
+
+                    </div>
+
+                    <!-- <body>
+                        <div id="calc-container">
+                            <h1>QTc calculator</h1>
+                            <p>Please enter details to calculate the QTc:</p>
+                            <label>Enter sex:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" value="m" id="male-option">
+                                <label class="form-check-label" for="male-option">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sex" value="f" id="female-option"
+                                    checked>
+                                <label class="form-check-label" for="female-option">
+                                    Female
+                                </label>
+                            </div>
+                            <br>
+                            <label>Enter HR (BPM):</label>
+                            <input type="number" name="hr">
+                            <br><br>
+                            <label>Enter QT interval (msec):</label>
+                            <input type="number" name="qt">
+                            </br><br>
+                            <input type="submit" name="next" value="Next">
+                        </div>
+                    </body> -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    {% endblock %}

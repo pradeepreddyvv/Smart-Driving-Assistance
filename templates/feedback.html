@@ -1,0 +1,81 @@
+<!-- //templates/profile.html -->
+{% extends 'layout.html' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+<h1>Report Page</h1>
+<div>
+    <p>Your account details are below:</p>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{ account['name'] }}</td>
+        </tr>
+        <tr>
+            <td>Gender: </td>
+            <td>{{ account['gender'] }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ account['email_id'] }}</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h5>report here</h5>
+            <form action="{{ url_for('feedback') }}" method="post" autocomplete="off">
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Subject of Report</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="subject" id="subject"
+                                placeholder="Enter your report subject" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Report Content</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="report_con" id="report_con"
+                                placeholder="Enter your Report message" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <input type="submit" value="report" class="form-control btn btn-primary " name="">
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+
+</html>
+{% endblock %}

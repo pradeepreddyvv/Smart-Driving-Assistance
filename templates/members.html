@@ -1,0 +1,82 @@
+<!-- //templates/profile.html -->
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h1>Members Metro Card Info</h1>
+<div>
+    <p>Your account details are below:</p>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{ account['name'] }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ account['email_id'] }}</td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td>{{ phoneno['p_no'] }}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Card ID:</td>
+            <td>{{ metrocard_info['card_id'] }}</td>
+        </tr>
+        <tr>
+            <td>Balance:</td>
+            <td>{{ metrocard_info ['balance'] }}</td>
+        </tr>
+    </table>
+    <div class="loggedin">
+        <div class="row main">
+            <div>
+                <h5>Register New user or login existing account</h5>
+                <form action="{{ url_for('members') }}" method="post" autocomplete="off">
+                    <div class="form-group">
+                        <label for="add_amount" class="cols-sm-2 control-label">amount to add</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input class="form-control" name="add_amount" id="balance"
+                                    placeholder="Enter the amount to add" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <input type="submit" value="ADD Amount" class="form-control btn btn-primary " name="">
+                        <!-- <p style="padding:5px;">
+                            <a href="{{ url_for('login') }}" class="btn btn-dark ">Login</a>
+                        </p> -->
+
+                    </div>
+
+                </form>
+                <table>
+                    <tr>
+                        <td>Card ID:</td>
+                        <td>{{ metrocard_info['card_id'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Balance:</td>
+                        <td>{{ metrocard_info ['balance'] }}</td>
+                    </tr>
+                </table>
+
+            </div>
+            {% endblock %}
