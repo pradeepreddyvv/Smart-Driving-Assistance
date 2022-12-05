@@ -187,13 +187,13 @@ def solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign):
 									dd[label]=1
 								else:
 									dd[label]+=1
-									if dd[label]>3 and label!=prev:
-										if traffic_sound=="Yes":
-											threading.Thread(target=speakSign,args=(label,)).start()
-											# engine.say(label)
-											# engine.runAndWait()
-										prev=label
-										dd.clear()
+								if dd[label]>=1 and label!=prev:
+									if traffic_sound=="Yes":
+										threading.Thread(target=speakSign,args=(label,)).start()
+										# engine.say(label)
+										# engine.runAndWait()
+									prev=label
+									dd.clear()
 								# engine.say(label)
 								# engine.runAndWait()
 								cv2.putText(frame, label, (x, y), font, 0.5, (255,0,0), 2)

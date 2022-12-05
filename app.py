@@ -10,6 +10,8 @@ from datetime import datetime
 # import datetime
 import datetime as dt
 import trafficDetection
+import lane_traffic
+import grab_screen
 
 app = Flask(__name__)
 app.secret_key = 'hi'
@@ -208,7 +210,13 @@ def main():
         road_lanes = preference['road_lanes']
         traffic_sign = preference['traffic_sign']
         email_id = preference['email_id']
+        # for input video
         trafficDetection.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
+        
+        # for WEB CAM
+        # lane_traffic.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
+        
+        # grab_screen.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
         return redirect(url_for('detect'))
     # Show registration form with message (if any)
     return render_template('login.html')
@@ -244,7 +252,14 @@ def detect():
             conn.commit()
             flash('You have successfully started detecting!')
             # lane_sound ,tarffic_sound ,road_lanes ,traffic_sign ,email_id
+            
+            # for input video
             trafficDetection.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
+            
+            # for WEB CAM
+            # lane_traffic.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
+            
+            # grab_screen.solve(lane_sound ,traffic_sound ,road_lanes ,traffic_sign)
             return render_template('detect.html', lane_sound=lane_sound, traffic_sound=traffic_sound, road_lanes=road_lanes, traffic_sign=traffic_sign,email_id=email_id,)
 
         # return render_template('detect.html', lane_sound=lane_sound, traffic_sound=traffic_sound, road_lanes=road_lanes, traffic_sign=traffic_sign,)
