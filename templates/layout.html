@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"-->
+    <script src="https://kit.fontawesome.com/629d3039ca.js" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
         id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -38,14 +39,14 @@
                         
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('detect') }}">
-                                <i class="fas fa-shopping-cart"></i>
+                                <i class="fas fa-users"></i>
                                 Current detect
                             </a>
                         </li>
                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('main') }}">
-                                <i class="fas fa-users"></i>
+                                <i class="fa-duotone fa-camera"></i>
                                 Start Detection With Previously Saved
                             </a>
                         </li>
