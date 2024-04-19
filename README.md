@@ -4,7 +4,7 @@ Capstone Project
 
 The demo of this project can be seen here: https://www.youtube.com/watch?v=bb5FEbVW14U&ab_channel=PradeepReddy
 
-Springer publications:
+Springer Nature:
 Smart Driving Assistance Using Deep Learning
 Conference paper
 https://link.springer.com/chapter/10.1007/978-3-031-50993-3_32
